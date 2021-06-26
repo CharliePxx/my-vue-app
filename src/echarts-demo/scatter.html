@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scatter</title>
+    <style>
+      body{
+          margin: 0;
+      }
+      .chart{
+          width: 100vw;
+          height: 100vh;
+          background: white;
+      }
+    </style>
+</head>
+<body>
+<div class="chart"></div>
+<script src="echarts.min.js"></script>
+<script>
+  const list =[];
+  for (let i =0;i<100;i++){
+    const item ={
+      sex:'female',
+      height:Math.ceil(Math.random()*20+150),
+      weight:Math.ceil(Math.random()*10+50),
+    };
+    list.push(item)
+  }
+  for (let i =0;i<100;i++){
+    const item ={
+      sex:'male',
+      height:Math.ceil(Math.random()*20+160),
+      weight:Math.ceil(Math.random()*10+70),
+    };
+    list.push(item)
+  }
+  const container = document.querySelector('.chart');
+  const instance = echarts.init(container)
+  const option = {
+    xAxis: {
+      min:'dataMin',
+    },
+    yAxis: {
+      min:'dataMin',
+    },
+    series: [
+      {
+          type: 'scatter',
+          symbolSize: 20,
+          data: list
+                  .filter((item)=>{
+                    return item.sex==='female';
+                  })
+                  .map((item)=>{
+                    return [item.height, item.weight];
+                  })
+      },
+      {
+        type: 'scatter',
+        symbolSize: 20,
+        data: list
+                .filter((item)=>{
+                  return item.sex==='male';
+                })
+                .map((item)=>{
+                  return [item.height, item.weight];
+                })
+      }
+    ]
+  };
+  instance.setOption(option);
+</script>
+</body>
+</html>

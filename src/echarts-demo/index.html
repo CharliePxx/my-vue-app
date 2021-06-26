@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .chart{
+            width: 100vw;
+            height: 100vh;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+<div class="chart"></div>
+<script src="echarts.min.js"></script>
+<script>
+    // console.log(echarts);
+    //初始化echarts实例
+    const container = document.querySelector('.chart');
+    const instance = echarts.init(container);
+    //配置配置项
+    // const list = [
+    //     {
+    //         week:'Mon',
+    //         value:150,
+    //         value1:30,
+    //         value2:70
+    //     },
+    //     {
+    //         week:'Tue',
+    //         value:120,
+    //         value1: 110,
+    //         value2:90
+    //     },
+    //     {
+    //         week:'Wed',
+    //         value:130,
+    //         value1:100,
+    //         value2:20
+    //     },
+    //     {
+    //         week:'Thu',
+    //         value:180,
+    //         value1: 80,
+    //         value2:170
+    //     },
+    //     {
+    //         week:'Fri',
+    //         value:140,
+    //         value1: 90,
+    //         value2:70
+    //     },
+    //     {
+    //         week:'Sat',
+    //         value:100,
+    //         value1: 150,
+    //         value2:70
+    //     }
+    // ]
+    // const option = {
+    //     legend: {
+    //         top: 'bottom'
+    //     },
+    //     xAxis: {
+    //         type: 'category',
+    //         // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    //         data:[],
+    //         // show: false,
+    //         boundaryGap:false
+    //     },
+    //     yAxis: {
+    //         type: 'value',
+    //         splitLine:{
+    //             show:false
+    //         },
+    //         // show:false
+    //     },
+    //     series: [
+    //         {
+    //         // data: [150, 230, 224, 218, 135, 147, 260],
+    //             data:[],
+    //             type: 'line',
+    //             // roseType:'area',
+    //             // itemStyle: {
+    //             //     borderRadius: 20
+    //             // },
+    //             // radius: [50, 250],
+    //             smooth:'spline',
+    //             areaStyle: {
+    //                 color: "rgba(252, 169, 196, 0.7)"
+    //             },
+    //
+    //         },
+    //         {
+    //             data:[],
+    //             type: 'line',
+    //             smooth:'spline',
+    //             areaStyle: {
+    //                 color: "rgba(63, 192, 211, 0.7)"
+    //             },
+    //         },
+    //         {
+    //             data:[],
+    //             type: 'line',
+    //             smooth:'spline',
+    //             areaStyle: {
+    //                 color: "rgba(74, 216, 89, 0.7)"
+    //             },
+    //         },
+    //     ],
+    //     // color:['#ffffff','#feabef'],
+    // };
+    // for (let i=0;i<list.length;i++){
+    //     const item=list[i];
+    //     option.xAxis.data.push(item.week)
+    //     option.series[0].data.push(item.value)
+    //     option.series[1].data.push(item.value1)
+    //     option.series[2].data.push(item.value2)
+    //     // 饼图
+    //     // option.series[0].data.push({
+    //     //     value:item.value,
+    //     //     name:item.week
+    //     // })
+    // }
+    function updateData(){
+        const list = [
+            {
+                week:'Mon',
+                value:Math.random()*150,
+                value1:Math.random()*30,
+                value2:Math.random()*70
+            },
+            {
+                week:'Tue',
+                value:Math.random()*120,
+                value1: Math.random()*110,
+                value2:Math.random()*90
+            },
+            {
+                week:'Wed',
+                value:Math.random()*130,
+                value1:Math.random()*100,
+                value2:Math.random()*20
+            },
+            {
+                week:'Thu',
+                value:Math.random()*180,
+                value1: Math.random()*80,
+                value2:Math.random()*170
+            },
+            {
+                week:'Fri',
+                value:Math.random()*140,
+                value1: Math.random()*90,
+                value2:Math.random()*70
+            },
+            {
+                week:'Sat',
+                value:Math.random()*100,
+                value1: Math.random()*150,
+                value2:Math.random()*70
+            }
+        ]
+        const option = {
+            legend: {
+                top: 'bottom'
+            },
+            xAxis: {
+                type: 'category',
+                // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data:[],
+                // show: false,
+                boundaryGap:false
+            },
+            yAxis: {
+                type: 'value',
+                splitLine:{
+                    show:false
+                },
+                // show:false
+            },
+            series: [
+                {
+                    // data: [150, 230, 224, 218, 135, 147, 260],
+                    data:[],
+                    type: 'line',
+                    // roseType:'area',
+                    // itemStyle: {
+                    //     borderRadius: 20
+                    // },
+                    // radius: [50, 250],
+                    smooth:'spline',
+                    areaStyle: {
+                        color: "rgba(252, 169, 196, 0.7)"
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+
+                },
+                {
+                    data:[],
+                    type: 'line',
+                    smooth:'spline',
+                    areaStyle: {
+                        color: "rgba(63, 192, 211, 0.7)"
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                },
+                {
+                    data:[],
+                    type: 'line',
+                    smooth:'spline',
+                    areaStyle: {
+                        color: "rgba(74, 216, 89, 0.7)"
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                },
+            ],
+            // color:['#ffffff','#feabef'],
+        };
+        for (let i=0;i<list.length;i++){
+            const item=list[i];
+            option.xAxis.data.push(item.week)
+            option.series[0].data.push(item.value)
+            option.series[1].data.push(item.value1)
+            option.series[2].data.push(item.value2)
+            // 饼图
+            // option.series[0].data.push({
+            //     value:item.value,
+            //     name:item.week
+            // })
+        }
+        instance.setOption(option);
+    }
+    setInterval(updateData, 1000);
+
+    // instance.setOption(option);
+</script>
+</body>
+</html>

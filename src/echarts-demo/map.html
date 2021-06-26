@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>map</title>
+  <style>
+    body{
+      margin: 0;
+    }
+    .chart{
+      width: 100vw;
+      height: 100vh;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+<div class="chart"></div>
+<script src="echarts.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  // console.log(axios);
+  const mapDataURL = './china.json';
+  axios.get(mapDataURL).then((res)=>{
+      console.log(res);
+      const mapData = res.data
+      echarts.registerMap('CHINA',mapData)
+      const container = document.querySelector('.chart');
+      const instance = echarts.init(container)
+      const option = {
+          series:[
+              {
+                  type:'map',
+                  map:'CHINA'
+              }
+          ]
+      }
+      instance.setOption(option);
+  });
+
+</script>
+</body>
+</html>
