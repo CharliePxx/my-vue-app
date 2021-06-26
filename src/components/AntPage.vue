@@ -29,6 +29,6 @@ export default {
   background: #42b983;
 }
 .main{
-  background: #99a9bf;
+  background: pink;
 }
 </style>
